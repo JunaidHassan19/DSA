@@ -68,3 +68,41 @@ int main()
 
   return 0;
 }
+/********Example 3rd**********/
+#include <iostream>
+using namespace std;
+/*
+Make the age form the user and then decide accordingly
+1. if ge < 18,
+print -> not eligble for job
+2. if age >= 18 ,
+print -> eligible  for a job
+3. if age >= 55 and  <= 57 ,
+print -> eligible for a job, but retirement soonm,
+4. if age > 57
+print -> ertirement time
+*/
+
+int main()
+{
+  int x;
+  cout << "Enter your age: ";
+  cin >> x;
+
+  if (x < 18)
+  {
+    cout << "No eligile for job";
+  }
+  else if (x >= 18 && x <= 57)
+  {
+    cout << "Eligible for a job";
+    if (x >= 55 && x <= 57)
+    {
+      cout << ", but retirement soon";
+    }
+  }
+  else
+  {
+    cout << "Retirement sooooooon!";
+  }
+}
