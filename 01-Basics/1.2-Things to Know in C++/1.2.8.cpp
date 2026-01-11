@@ -146,30 +146,30 @@ using namespace std;
 // Any changes made inside the function do NOT affect the original variable
 
 // Demonstration with integer
-void doSomething(int x)
-{
-  // 'x' is a COPY of 'num' from main(), not the original
-  cout << x << endl; // Output: 10 (initial copy)
-  x += 10;
-  cout << x << endl; // Output: 20 (copy modified)
-  x += 10;
-  cout << x << endl; // Output: 30 (copy modified)
-  x += 10;
-  cout << x << endl; // Output: 40 (copy modified)
-  x += 10;
-  cout << x << endl; // Output: 50 (copy modified)
-  // When function ends, this copy 'x' is destroyed
-}
+// void doSomething(int x)
+// {
+//   // 'x' is a COPY of 'num' from main(), not the original
+//   cout << x << endl; // Output: 10 (initial copy)
+//   x += 10;
+//   cout << x << endl; // Output: 20 (copy modified)
+//   x += 10;
+//   cout << x << endl; // Output: 30 (copy modified)
+//   x += 10;
+//   cout << x << endl; // Output: 40 (copy modified)
+//   x += 10;
+//   cout << x << endl; // Output: 50 (copy modified)
+//   // When function ends, this copy 'x' is destroyed
+// }
 
-int main()
-{
-  int num = 10;
-  doSomething(num);    // Passes a COPY of 'num' (value 10)
-  cout << num << endl; // Output: 10 (original unchanged!)
-  // KEY INSIGHT: 'num' is still 10 because only the copy was modified
+// int main()
+// {
+//   int num = 10;
+//   doSomething(num);    // Passes a COPY of 'num' (value 10)
+//   cout << num << endl; // Output: 10 (original unchanged!)
+//   // KEY INSIGHT: 'num' is still 10 because only the copy was modified
 
-  return 0;
-}
+//   return 0;
+// }
 
 /*********************************************************/
 // EXAMPLE 7: Pass by Value with Strings
@@ -200,4 +200,71 @@ int main()
   4. Useful when you don't want to modify the original data
 
   To modify original variable, use "Pass by Reference" (with & symbol)
+*/
+
+/*********************************************************/
+// ======== Pass by Reference ===========
+// When you pass a variable by reference (using &), the function receives
+// the ACTUAL variable, not a copy. Any changes made inside the function
+// WILL affect the original variable.
+
+// EXAMPLE 8: Pass by Reference with Strings
+// Demonstration: modifying original string through reference
+
+// void doSomething(string &j)
+// {
+//   // 'j' is a REFERENCE to the original string from main()
+//   // It's like an alias - same memory location, different name
+//   j[0] = 's';           // Modifying first character of ORIGINAL
+//   cout << j << endl;    // Output: "sunni"
+// }
+
+// int main()
+// {
+//   string j = "junni";
+//   doSomething(j);       // Passes REFERENCE to original string
+//   cout << j << endl;    // Output: "sunni" (original IS changed!)
+//   // KEY INSIGHT: Original string changed from "junni" to "sunni"
+//   return 0;
+// }
+
+/******************************************************/
+// EXAMPLE 9: Pass by Reference with Integers
+// Demonstration: modifying original integer through reference
+
+void doSomething(int &j)
+{
+  // 'j' is a REFERENCE to 'num' from main() - same memory location
+  cout << j << endl; // Output: 10 (original value)
+  j += 10;
+  cout << j << endl; // Output: 20 (original modified)
+  j += 10;
+  cout << j << endl; // Output: 30 (original modified)
+  j += 10;
+  cout << j << endl; // Output: 40 (original modified)
+  // Changes persist because we're modifying the actual variable
+}
+
+int main()
+{
+  int num = 10;
+  doSomething(num);    // Passes REFERENCE to 'num'
+  cout << num << endl; // Output: 40 (original IS changed!)
+  // KEY INSIGHT: 'num' is now 40 because the function modified the actual variable
+  return 0;
+}
+
+/*
+  SUMMARY - Pass by Reference:
+  ============================
+  1. Use & symbol in function parameter: void func(int &x)
+  2. The function receives the ACTUAL variable, not a copy
+  3. Changes inside the function AFFECT the original variable
+  4. More memory efficient for large objects (no copying)
+  5. Use when you WANT to modify the original data
+
+  COMPARISON:
+  -----------
+  Pass by Value:     void func(int x)   -> Copy, original unchanged
+  Pass by Reference: void func(int &x)  -> Alias, original changes
 */
