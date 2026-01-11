@@ -116,26 +116,88 @@ using namespace std;
 // }
 
 // APPROACH 2: return function (returns value for flexibility)
-int max(int a, int b)
+// int max(int a, int b)
+// {
+//   if (a > b)
+//     return a;
+//   else
+//     return b;
+// }
+
+// int main()
+// {
+//   int num1, num2;
+//   cout << "Enter 2 numbers: ";
+//   cin >> num1 >> num2;
+
+//   // Using return function - can store result in variable
+//   int maxinum = max(num1, num2);
+//   cout << maxinum;
+
+//   // Alternative: print directly without storing
+//   // cout << max(num1, num2);
+
+//   return 0;
+// }
+
+/*********************************************************/
+// ======== Pass by Value===========
+// When you pass a variable by value, the function receives a COPY of the variable
+// Any changes made inside the function do NOT affect the original variable
+
+// Demonstration with integer
+void doSomething(int x)
 {
-  if (a > b)
-    return a;
-  else
-    return b;
+  // 'x' is a COPY of 'num' from main(), not the original
+  cout << x << endl; // Output: 10 (initial copy)
+  x += 10;
+  cout << x << endl; // Output: 20 (copy modified)
+  x += 10;
+  cout << x << endl; // Output: 30 (copy modified)
+  x += 10;
+  cout << x << endl; // Output: 40 (copy modified)
+  x += 10;
+  cout << x << endl; // Output: 50 (copy modified)
+  // When function ends, this copy 'x' is destroyed
 }
 
 int main()
 {
-  int num1, num2;
-  cout << "Enter 2 numbers: ";
-  cin >> num1 >> num2;
-
-  // Using return function - can store result in variable
-  int maxinum = max(num1, num2);
-  cout << maxinum;
-
-  // Alternative: print directly without storing
-  // cout << max(num1, num2);
+  int num = 10;
+  doSomething(num);    // Passes a COPY of 'num' (value 10)
+  cout << num << endl; // Output: 10 (original unchanged!)
+  // KEY INSIGHT: 'num' is still 10 because only the copy was modified
 
   return 0;
 }
+
+/*********************************************************/
+// EXAMPLE 7: Pass by Value with Strings
+// Same concept applies to strings - function receives a copy
+
+// void doSomething(string j)
+// {
+//   // 'j' is a COPY of the string from main()
+//   j[0] = 's';           // Modifying first character of the COPY
+//   cout << j << endl;    // Output: "sunni" (copy is modified)
+// }
+
+// int main()
+// {
+//   string j = "junni";
+//   doSomething(j);       // Passes a COPY of string "junni"
+//   cout << j << endl;    // Output: "junni" (original unchanged!)
+//   // KEY INSIGHT: Original string remains "junni" because only copy was changed
+//   return 0;
+// }
+
+/*
+  SUMMARY - Pass by Value:
+  ========================
+  1. A COPY of the variable is passed to the function
+  2. Changes inside the function only affect the copy
+  3. Original variable in the calling function remains UNCHANGED
+  4. Useful when you don't want to modify the original data
+
+  To modify original variable, use "Pass by Reference" (with & symbol)
+*/
