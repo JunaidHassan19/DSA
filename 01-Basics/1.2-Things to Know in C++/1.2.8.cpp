@@ -73,23 +73,69 @@ using namespace std;
 // This function takes two integer inputs and prints their sum
 // Demonstrates: passing multiple parameters to a function
 
-void sum(int a, int b)
+// void sum(int a, int b)
+// {
+//   int c = a + b;
+//   cout << "The sum of " << a << " and " << b << " is " << c;
+// }
+
+// int main()
+// {
+//   int x;
+//   cout << "Enter first number: ";
+//   cin >> x; // First number input
+
+//   int y;
+//   cout << "Enter second number: ";
+//   cin >> y; // Second number input
+
+//   sum(x, y); // Passing both x and y as arguments to sum()
+
+//   return 0;
+// }
+
+/*******************************************************/
+// EXAMPLE 5: Finding Maximum of Two Numbers
+// Demonstrates TWO different approaches:
+//
+// APPROACH 1 (void function - commented out):
+// - Uses void return type, prints result directly
+// - Cannot reuse the result in further calculations
+//
+// APPROACH 2 (return function - active):
+// - Returns the maximum value to the caller
+// - Result can be stored in a variable and reused
+
+// APPROACH 1: void function (prints directly, no return)
+// void maxx(int a, int b)
+// {
+//   if (a > b)
+//     cout << a;
+//   else
+//     cout << b;
+// }
+
+// APPROACH 2: return function (returns value for flexibility)
+int max(int a, int b)
 {
-  int c = a + b;
-  cout << "The sum of " << a << " and " << b << " is " << c;
+  if (a > b)
+    return a;
+  else
+    return b;
 }
 
 int main()
 {
-  int x;
-  cout << "Enter first number: ";
-  cin >> x; // First number input
+  int num1, num2;
+  cout << "Enter 2 numbers: ";
+  cin >> num1 >> num2;
 
-  int y;
-  cout << "Enter second number: ";
-  cin >> y; // Second number input
+  // Using return function - can store result in variable
+  int maxinum = max(num1, num2);
+  cout << maxinum;
 
-  sum(x, y); // Passing both x and y as arguments to sum()
+  // Alternative: print directly without storing
+  // cout << max(num1, num2);
 
   return 0;
 }
