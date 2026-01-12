@@ -36,3 +36,13 @@ int main()
   cin >> n;
   print(n);
 }
+
+/*
+Output (for n = 5):
+
+*
+**
+***
+****
+*****
+*/
