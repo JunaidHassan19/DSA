@@ -69,3 +69,11 @@ int main()
   // print(x);
   sol.print(x);
 }
+/*
+output (for n = 5):
+*********
+ *******
+  *****
+   ***
+    *
+*/
