@@ -50,3 +50,15 @@ int main()
   print(N);
   return 0;
 }
+/*
+Output (N=5):
+    A
+   ABA
+  ABCBA
+ ABCDCBA
+ABCDEDCBA
+
+Pattern: Alphabet Pyramid | TC: O(n²) | SC: O(1)
+- Each row has (2*i+1) characters
+- Letters go A→B→C... up to midpoint, then C→B→A back down
+*/
