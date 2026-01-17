@@ -1,21 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Pattern: Right-Aligned Alphabet Triangle | TC: O(n²) | SC: O(1)
 class Solution
 {
 public:
-  // Function to print Pattern 18
-  void pattern18(int N)
+  void print(int N)
   {
-    // Loop for each row
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++) // N rows
     {
-      // Print characters from ('A' + N - 1 - i) to ('A' + N - 1)
+      // Start from a different letter each row, end at same letter (E)
+      // Row 0: E, Row 1: D E, Row 2: C D E, etc.
       for (char ch = ('A' + N - 1) - i; ch <= ('A' + N - 1); ch++)
       {
         cout << ch << " ";
       }
-      // Move to next line after each row
       cout << endl;
     }
   }
@@ -23,11 +22,22 @@ public:
 
 int main()
 {
-  // Create solution object
   Solution sol;
-  // Define N
   int N = 5;
-  // Call pattern function
-  sol.pattern18(N);
+  sol.print(N);
   return 0;
 }
+/*
+Output (N=5):
+E
+D E
+C D E
+B C D E
+A B C D E
+
+Logic:
+- Row 0: starts at E (A+4), prints 1 letter
+- Row 1: starts at D (A+3), prints 2 letters
+- Row i: starts at (A+N-1-i), ends at (A+N-1)
+- Each row ends at the same letter (E for N=5)
+*/
