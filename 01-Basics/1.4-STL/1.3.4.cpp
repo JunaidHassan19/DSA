@@ -17,6 +17,7 @@ using namespace std;
 
 int main()
 {
+	// Initialize vector with elements
 	vector<int> v = {10, 20, 30, 40};
 
 	cout << "Vector elements: ";
