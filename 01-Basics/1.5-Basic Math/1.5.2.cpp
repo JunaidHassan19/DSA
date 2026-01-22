@@ -18,19 +18,42 @@
  */
 
 #include <iostream>
+#include <climits>
 using namespace std;
+
+// Reverse digits of an integer (LeetCode style)
+int reverseDigits(int n)
+{
+  int revNum = 0;
+  while (n != 0)
+  {
+    int digit = n % 10;
+    n /= 10;
+
+    // Check overflow before multiplying/adding
+    if (revNum > INT_MAX / 10 || (revNum == INT_MAX / 10 && digit > 7))
+      return 0;
+    if (revNum < INT_MIN / 10 || (revNum == INT_MIN / 10 && digit < -8))
+      return 0;
+
+    revNum = revNum * 10 + digit;
+  }
+  return revNum;
+}
 
 int main()
 {
-  int n;                        // input number
-  cout << "Enter the Digits: "; // prompt user for input
-  cin >> n;                     // read input number
-  int revNum = 0;               // variable to store reversed number
-  while (n > 0)                 // loop until all digits are processed
-  {
-    int id = n % 10;             // get last digit
-    revNum = (revNum * 10) + id; // append last digit to reversed number
-    n = n / 10;                  // remove last digit from original number
-  }
-  cout << revNum; // output the reversed number
+  int n;
+  cin >> n;
+  cout << reverseDigits(n);
+  /*
+    int revNum = 0;
+    while (n > 0)
+    {
+      int id = n % 10;
+      revNum = (revNum * 10) + id;
+      n = n / 10;
+    }
+    cout << revNum;
+    */
 }
